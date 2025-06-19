@@ -1,0 +1,159 @@
+/* src/App.css */
+
+/* Define the keyframes for the rotation animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* The class we will apply to the logo image */
+.rotating-logo {
+  /*
+    - 'spin': the name of our @keyframes animation.
+    - 'infinite': makes the animation loop forever.
+    - '20s': the duration for one full rotation (20 seconds).
+    - 'linear': ensures the rotation speed is constant.
+  */
+  animation: spin infinite 12s linear;
+
+  /* Set a size for the logo. Using viewport units can make it responsive. */
+  height: 30vmin;
+
+  /* This is a good practice for purely decorative animated elements */
+  pointer-events: none;
+
+  position: absolute;
+  top: 5vmin;
+  left: 5vw;
+  width: 150px;
+  height: auto;
+
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Background image settings */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../public/assets/bg-web.jpg');
+  min-height: 100vh; /* Ensure it covers the full viewport height */
+  transition: background-image 0.3s ease-in-out; /* Optional: smooth transition */
+  
+  color: white;
+  overflow: hidden;
+}
+
+/* K Logo - Top Left */
+.logo-k {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 100px;
+  height: auto;
+}
+
+/* Instagram Logo - Bottom Right */
+.logo-instagram {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 50px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.logo-instagram:hover {
+  transform: scale(1.1);
+}
+
+.logo-instagram img {
+  width: 100%;
+  display: block;
+}
+
+/* Main 'KULA courts' Text */
+.main-text {
+  text-align: center;
+}
+
+.main-text h1 {
+  font-size: 10rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  /* A font like 'Poppins' or 'Montserrat' would look good here */
+}
+
+.main-text p {
+  font-size: 2rem;
+  font-weight: 300;
+  margin: -10px 0 0 0;
+  letter-spacing: 0.25em;
+  text-transform: lowercase;
+}
+
+
+/* ------------------- */
+/* --- Mobile View --- */
+/* ------------------- */
+
+/* This media query targets devices with a width of 768px or less (tablets and phones) */
+@media (max-width: 768px) {
+  
+  .rotating-logo {
+
+    position: absolute;
+    top: 30vh;
+    left: 32vw;
+    width: 120px;
+    height: auto;
+  
+  }
+  /* On mobile, we change the layout to a vertical stack */
+  .app-container {
+    flex-direction: column;
+    justify-content: space-between; /* Pushes items to top, center, and bottom */
+    padding: 60px 20px;
+
+    background-image: url('../public/assets/bg-mobile.png');
+
+  }
+  
+  /* Remove absolute positioning for the logos */
+  .logo-k, .logo-instagram {
+    position: static;
+  }
+
+  /* Center the text and logos, which are now flex items */
+  .logo-k {
+    width: 75px;
+    margin-bottom: 20px; /* Add some space below */
+  }
+
+  .logo-instagram {
+    width: 45px;
+    margin-top: 20px; /* Add some space above */
+  }
+  
+  /* Adjust font sizes for smaller screens */
+  .main-text h1 {
+    font-size: 6rem;
+  }
+
+  .main-text p {
+    font-size: 1.5rem;
+  }
+
+}
+
